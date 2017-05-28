@@ -36,9 +36,11 @@ namespace engine {
 			}
 
 			glfwSetWindowSizeCallback(m_Window, window_size_callback);
-
-
 			glfwMakeContextCurrent(m_Window);
+
+			if (glewInit() != GLEW_OK) {
+				std::cout << "Failed to initialize GLEW!" << std::endl;
+			}
 
 			return true;
 		}
