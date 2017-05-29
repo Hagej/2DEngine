@@ -82,6 +82,11 @@ namespace engine {
 			return m_MouseButtons[button];
 		}
 
+		void Window::getMousePosition(double& x, double& y) {
+			x = mx;
+			y = my;
+		}
+
 
 		/***	CALLBACKS	 ***/
 

@@ -17,6 +17,8 @@ int main() {
 	while (!window.closed()) {
 		window.clear();
 
+#if 0
+
 		if (window.isKeyPressed(GLFW_KEY_A)) {
 			std::cout << "A PRESSED!" << std::endl;
 		}
@@ -24,6 +26,14 @@ int main() {
 		if (window.isMouseButtonPressed(GLFW_MOUSE_BUTTON_LEFT)) {
 			std::cout << "LEFT PRESSED!" << std::endl;
 		}
+
+#endif
+#if 0
+		double x, y;
+		window.getMousePosition(x, y);
+		std::cout << "Window: " << window.getWidth() << "," << window.getHeight() << std::endl;
+		std::cout << "Mouse: " << x << "," << y << std::endl;
+#endif
 
 		glBegin(GL_TRIANGLES);
 		glVertex2f(-0.5f, -0.5f);

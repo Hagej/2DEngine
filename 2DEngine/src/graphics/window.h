@@ -31,6 +31,7 @@ namespace engine {
 
 			static bool isKeyPressed(unsigned int keycode);
 			static bool isMouseButtonPressed(unsigned int button);
+			static void getMousePosition(double& x, double& y);
 
 			inline int getWidth() const { return m_Width; };
 			inline int getHeight() const { return m_Height; };
