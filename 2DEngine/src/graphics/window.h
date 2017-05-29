@@ -29,9 +29,9 @@ namespace engine {
 			void update();
 			bool closed() const;
 
-			bool isKeyPressed(unsigned int keycode);
-			bool isMouseButtonPressed(unsigned int button);
-			void getMousePosition(double& x, double& y);
+			bool isKeyPressed(unsigned int keycode) const;
+			bool isMouseButtonPressed(unsigned int button) const;
+			void getMousePosition(double& x, double& y) const;
 
 			inline int getWidth() const { return m_Width; };
 			inline int getHeight() const { return m_Height; };

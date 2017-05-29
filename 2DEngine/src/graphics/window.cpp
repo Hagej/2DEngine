@@ -67,18 +67,18 @@ namespace engine {
 			return glfwWindowShouldClose(m_Window) == 1;
 		}
 
-		bool Window::isKeyPressed(unsigned int keycode) {
+		bool Window::isKeyPressed(unsigned int keycode) const {
 			// TODO: Log this
 			if (keycode >= MAX_KEYS) { return false; }
 			return m_Keys[keycode];
 		}
 
-		bool Window::isMouseButtonPressed(unsigned int button) {
+		bool Window::isMouseButtonPressed(unsigned int button) const {
 			if (button >= MAX_BUTTONS) { return false; }
 			return m_MouseButtons[button];
 		}
 
-		void Window::getMousePosition(double& x, double& y) {
+		void Window::getMousePosition(double& x, double& y) const {
 			x = mx;
 			y = my;
 		}
