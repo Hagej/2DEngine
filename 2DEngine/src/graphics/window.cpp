@@ -4,10 +4,6 @@
 namespace engine {
 	namespace graphics {
 
-		bool Window::m_Keys[MAX_KEYS];
-		bool Window::m_MouseButtons[MAX_BUTTONS];
-		double Window::mx, Window::my;
-
 		Window::Window(int width, int height, const char *title) {
 			m_Title = title;
 			m_Width = width;

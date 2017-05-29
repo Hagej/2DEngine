@@ -18,9 +18,9 @@ namespace engine {
 			int m_Width, m_Height;
 			GLFWwindow *m_Window;
 
-			static bool m_Keys[MAX_KEYS];
-			static bool m_MouseButtons[MAX_BUTTONS];
-			static double mx, my;
+			bool m_Keys[MAX_KEYS];
+			bool m_MouseButtons[MAX_BUTTONS];
+			double mx, my;
 
 		public:
 			Window(int width, int height, const char* title);
@@ -29,9 +29,9 @@ namespace engine {
 			void update();
 			bool closed() const;
 
-			static bool isKeyPressed(unsigned int keycode);
-			static bool isMouseButtonPressed(unsigned int button);
-			static void getMousePosition(double& x, double& y);
+			bool isKeyPressed(unsigned int keycode);
+			bool isMouseButtonPressed(unsigned int button);
+			void getMousePosition(double& x, double& y);
 
 			inline int getWidth() const { return m_Width; };
 			inline int getHeight() const { return m_Height; };
