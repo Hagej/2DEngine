@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "src\graphics\window.h"
-#include "src\maths\vec2.h"
+#include "src\maths\maths.h"
 
 int main() {
 
@@ -16,12 +16,17 @@ int main() {
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
-	vec2 a(1, 2);
-	vec2 b(3, 4);
+	mat4 trans = mat4::translation(vec3(3, 4, 5));
 
-	vec2 c = a + b;
+	vec4 c0 = trans.columns[0];
+	vec4 c1 = trans.columns[1];
+	vec4 c2 = trans.columns[2];
+	vec4 c3 = trans.columns[3];
 
-	std::cout << "a = " << a << "  b = " << b << "  c = " << c << std::endl;
+	std::cout << c0 << std::endl;
+	std::cout << c1 << std::endl;
+	std::cout << c2 << std::endl;
+	std::cout << c3 << std::endl;
 
 	while (!window.closed()) {
 		window.clear();

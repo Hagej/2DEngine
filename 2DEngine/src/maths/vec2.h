@@ -17,10 +17,10 @@ namespace engine {
 			vec2& multiply(const vec2& that);
 			vec2& divide(const vec2& that);
 
-			friend vec2& operator+(vec2 left, const vec2& right);
-			friend vec2& operator-(vec2 left, const vec2& right);
-			friend vec2& operator*(vec2 left, const vec2& right);
-			friend vec2& operator/(vec2 left, const vec2& right);
+			friend vec2 operator+(vec2 left, const vec2& right);
+			friend vec2 operator-(vec2 left, const vec2& right);
+			friend vec2 operator*(vec2 left, const vec2& right);
+			friend vec2 operator/(vec2 left, const vec2& right);
 
 			bool operator==(const vec2& that);
 			bool operator!=(const vec2& that);
