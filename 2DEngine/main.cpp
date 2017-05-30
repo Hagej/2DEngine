@@ -2,6 +2,9 @@
 
 #include "src\graphics\window.h"
 #include "src\maths\maths.h"
+#include "src\utils\fileutils.h"
+#include "src\graphics\shader.h"
+
 
 int main() {
 
@@ -10,34 +13,39 @@ int main() {
 	using namespace maths;
 
 	Window window(800, 600, "2D Engine");
-	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+	glClearColor(0.0, 0.0f, 0.0f, 1.0f);
 
-	GLuint vao;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
 
-	mat4 trans = mat4::translation(vec3(3, 4, 5));
+	GLfloat vertices[] = {
+		0, 0, 0,
+		8, 0, 0,
+		0, 3, 0,
+		0, 3, 0,
+		8, 3, 0,
+		8, 0, 0
+	};
 
-	vec4 c0 = trans.columns[0];
-	vec4 c1 = trans.columns[1];
-	vec4 c2 = trans.columns[2];
-	vec4 c3 = trans.columns[3];
+	GLuint vbo;
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(0);
 
-	std::cout << c0 << std::endl;
-	std::cout << c1 << std::endl;
-	std::cout << c2 << std::endl;
-	std::cout << c3 << std::endl;
+	mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
+
+	Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");
+	shader.enable();
+	shader.setUniformMat4("pr_matrix", ortho);
+	shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
+
+	shader.setUniform2f("light_pos", vec2(8.0f, 4.5f));
+	shader.setUniform4f("col", vec4(0.2f, 0.3f, 0.8f, 1.0f));
+
 
 	while (!window.closed()) {
 		window.clear();
-
-		
-
-		glBegin(GL_TRIANGLES);
-		glVertex2f(-0.5f, -0.5f);
-		glVertex2f( 0.0f, 0.5f);
-		glVertex2f( 0.5f, -0.5f);
-		glEnd();
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 		window.update();
 
 	}
